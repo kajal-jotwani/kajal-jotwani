@@ -1,40 +1,48 @@
-<!-- Header Image -->
-<p align="center">
-  <img src="banner.png" alt="coding in the mountains" width="600"/>
-</p>
+<table>
+  <tr>
+    <td>
+      <h1>Hii, I'm Kajal Jotwani 🌸</h1>
+      <p>
+        learning • building • shipping • growing  
+        <br />
+        one curious step at a time ✨
+      </p>
+    </td>
+    <td>
+      <img src="banner.png" alt="coding in the mountains" width="700" height="300">
+    </td>
+  </tr>
+</table>
+<p align="center"> <i> fueled by coffee ☕, curiosity 🧠, and dreams way bigger than my comfort zone 🌱 </i> </p>
 
-<h1 align="center">Hi, I'm Kajal 🌸</h1>
+## 🌱 A little about me
 
-<p align="center">
-  <i>
-    I write code with a cup of coffee, a curious mind,  
-    and dreams bigger than the mountains I imagine myself coding on.
-  </i>
-</p>
+✨ **Third-year Computer Science undergrad** 
 
----
+💻 **Backend, Systems & Beyond**  
+I enjoy exploring backend technologies, system design, and how things work under the hood.  
+Currently diving into **AI**, **MCP**, and understanding how modern intelligent systems are built (it genuinely fascinates me).
 
-### 🌿 About Me
+🌍 **Open Source**  
+I am actively contributing to opensource projects.
 
-✨ Computer Science student  
-💻 Full-stack & backend learner  
-🌱 Open-source enthusiast  
-☕ Runs on coffee, curiosity, and clean code  
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/GSoC_logo.svg" height="30" align="left" />**GSoC ’25 Contributor — UC OSPO**  
 
-I love building things that **feel meaningful**, whether that’s:
-- contributing to open-source,
-- learning how systems work under the hood,
-- or turning small ideas into real products.
+Contributed to **Brahma-XR**, where I explored **VR development**, **Three.js**, **Blender**, and **shaders**.
 
-I’m someone who enjoys the *process* as much as the outcome — learning, breaking things, fixing them, and growing a little every day.
 
----
+🏗️ **C4GT ’25 Contributor**  
+Built an **Education Management Information System** for **ADC Karnal**.
 
-### 🛠️ What I Work With
+🌸 **Women Engineers scholar ’24 by Google × TalentSprint**
 
-```txt
-Languages      : C++, Python, JavaScript
-Frontend       : React, Next.js, HTML, CSS
-Backend        : Node.js, Go (learning)
-Databases      : PostgreSQL, MongoDB
-Tools & Dev    : Git, GitHub, Linux, Cloudinary
+🎓 **LiFT ’25 Scholar**
+
+✍️ **I write blogs**  
+I enjoy documenting what I learn you can find my blogs linked [here](https://medium.com/@kajaljotwani06).
+
+🏃‍♀️ **Fun fact**  
+If you don’t find me coding, you’ll probably find me running or at the gym.
+
+
+<p align="center"> <i> i’m just here, trying to show up every day! learning, building, failing, fixing, and becoming a little better 🌷 </i> </p> 
