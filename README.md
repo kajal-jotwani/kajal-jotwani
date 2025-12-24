@@ -7,6 +7,11 @@
 learning • building • shipping • growing  
 one curious step at a time ✨
 
+![](https://komarev.com/ghpvc/?username=kajal-jotwani&color=blueviolet)
+
+
+</h1>
+
 </td>
 <td width="50%">
 
