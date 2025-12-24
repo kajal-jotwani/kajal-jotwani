@@ -1,18 +1,13 @@
-<table>
-  <tr>
-    <td>
-      <h1>Hii, I'm Kajal Jotwani 🌸</h1>
-      <p>
-        learning • building • shipping • growing  
-        <br />
-        one curious step at a time ✨
-      </p>
-    </td>
-    <td>
-      <img src="banner.png" alt="coding in the mountains" width="700" height="300">
-    </td>
-  </tr>
-</table>
+<img src="banner.png" width="700" align="right" />
+
+<h1>Hii, I'm Kajal Jotwani 🌸</h1>
+<p>
+learning • building • shipping • growing<br/>
+one curious step at a time ✨
+</p>
+
+<br clear="right" />
+
 <p align="center"> <i> fueled by coffee ☕, curiosity 🧠, and dreams way bigger than my comfort zone 🌱 </i> </p>
 
 ## 🌱 A little about me
