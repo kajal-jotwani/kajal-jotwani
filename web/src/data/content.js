@@ -12,6 +12,40 @@ import raw from "../../content.json";
 
 const MIN_BLOCK_YEARS = 1; // point-in-time entries (start === end) still render
 
+/*
+ * A tiny, safe markdown → HTML renderer for the drawer `detail` field. Kept in
+ * the build-time loader so the client ships NO markdown library — the drawer
+ * just sets innerHTML. Supports paragraphs, line breaks, **bold**, *italic*,
+ * `inline code`, and [text](url). Input is HTML-escaped first.
+ */
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[c]));
+}
+function renderInline(s) {
+  let out = escapeHtml(s);
+  out = out.replace(/`([^`]+)`/g, "<code>$1</code>");
+  out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  out = out.replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+  out = out.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+  );
+  return out;
+}
+function renderMarkdown(md) {
+  return md
+    .trim()
+    .split(/\n{2,}/)
+    .map((p) => `<p>${renderInline(p.replace(/\n/g, "<br>"))}</p>`)
+    .join("");
+}
+
 /* Normalise + validate the raw JSON into a predictable shape. */
 function normalise(raw) {
   const lanes = (raw.lanes ?? []).map((l) => ({
@@ -35,6 +69,7 @@ function normalise(raw) {
       tags: Array.isArray(e.tags) ? e.tags.map(String) : [],
       links: Array.isArray(e.links) ? e.links.map(String) : [],
       detail: String(e.detail ?? ""),
+      detailHtml: renderMarkdown(String(e.detail ?? "")),
     }));
 
   return { meta: raw.meta ?? {}, lanes, entries };

@@ -1,0 +1,183 @@
+---
+/*
+ * Drawer.astro — right-side detail panel. Markup only; all behavior lives in
+ * src/scripts/drawer.js, which subscribes to entry:click on the bus.
+ */
+---
+
+<div class="drawer" data-drawer hidden>
+  <div class="drawer__backdrop" data-drawer-backdrop></div>
+  <aside
+    class="drawer__panel"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="drawer-title"
+    data-drawer-panel
+  >
+    <header class="drawer__header">
+      <h2 class="drawer__title" id="drawer-title" data-drawer-title>—</h2>
+      <button
+        type="button"
+        class="drawer__close"
+        data-drawer-close
+        aria-label="Close details"
+      >
+        ✕
+      </button>
+    </header>
+
+    <div class="drawer__meta" data-drawer-meta></div>
+    <div class="drawer__body" data-drawer-body></div>
+    <div class="drawer__links" data-drawer-links></div>
+  </aside>
+</div>
+
+<script>
+  import "../scripts/drawer.js";
+</script>
+
+<style>
+  .drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .drawer__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity var(--speed) var(--ease);
+  }
+
+  .drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(440px, 92vw);
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    box-shadow: -20px 0 60px -30px rgba(0, 0, 0, 0.6);
+    transform: translateX(100%);
+    transition: transform 280ms var(--ease);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    pointer-events: auto;
+  }
+
+  .drawer.is-open {
+    pointer-events: auto;
+  }
+  .drawer.is-open .drawer__backdrop {
+    opacity: 1;
+  }
+  .drawer.is-open .drawer__panel {
+    transform: translateX(0);
+  }
+
+  .drawer__header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem 1rem;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .drawer__title {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .drawer__close {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    transition: color var(--speed) var(--ease),
+      border-color var(--speed) var(--ease);
+  }
+  .drawer__close:hover {
+    color: var(--accent);
+    border-color: var(--border-strong);
+  }
+
+  .drawer__meta {
+    padding: 1rem 1.5rem 0;
+  }
+  .drawer__meta-line {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .drawer__tags {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .drawer__tags li {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--fg-dim);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  .drawer__body {
+    padding: 1rem 1.5rem;
+    color: var(--fg-dim);
+    line-height: 1.65;
+  }
+  .drawer__body :global(p) {
+    margin: 0 0 0.9rem;
+  }
+  .drawer__body :global(strong) {
+    color: var(--fg);
+  }
+  .drawer__body :global(a) {
+    color: var(--accent);
+  }
+  .drawer__body :global(code) {
+    background: var(--bg-2);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+
+  .drawer__links {
+    padding: 0 1.5rem 1.6rem;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .drawer__link {
+    font-size: 0.85rem;
+    color: var(--fg-dim);
+    word-break: break-all;
+  }
+  .drawer__link:hover {
+    color: var(--accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drawer__backdrop,
+    .drawer__panel {
+      transition: none;
+    }
+  }
+</style>

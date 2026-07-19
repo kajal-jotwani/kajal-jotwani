@@ -2,6 +2,8 @@
 import "../styles/theme.css";
 import "../styles/base.css";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import Sequencer from "../components/Sequencer.astro";
+import Drawer from "../components/Drawer.astro";
 import Resume from "../components/Resume.astro";
 import { content } from "../data/content.js";
 
@@ -67,11 +69,17 @@ const themeBootstrap = `(function(){try{var k='kj-theme';var s=localStorage.getI
       </nav>
 
       <p class="hero__placeholder muted">
-        <em>Below: your career as a timeline. Play + sound arrive next stage.</em>
+        <em>Below: your career as a playable timeline. Hover, click, or use the arrow keys.</em>
       </p>
 
-      <Resume />
+      <Sequencer />
+
+      <!-- No-JS fallback: the static DOM timeline still renders for crawlers
+           and anyone with JS disabled. JS users get the canvas instead. -->
+      <noscript><Resume /></noscript>
     </main>
+
+    <Drawer />
 
     <script>
       import "../scripts/main.js";
