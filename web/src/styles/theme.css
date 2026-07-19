@@ -1,0 +1,91 @@
+/*
+ * theme.css — the single source of truth for color.
+ *
+ * One signature accent (warm amber) defines the site identity. Each lane
+ * gets a tint derived from that same hue family (warm amber → coral → gold),
+ * so the sequencer reads as one coherent instrument, not a rainbow.
+ *
+ * Dark is the default (:root). Light overrides via [data-theme="light"].
+ * Every Canvas module reads these same variables through getComputedStyle, so
+ * dark/light stays one coherent system — no per-module theme hacks. A
+ * `theme:change` event on the bus re-renders all canvases.
+ *
+ * Colors are written as hex / hsl() so they're directly usable as Canvas 2D
+ * fillStyle strings later (no oklch parsing surprises).
+ */
+
+:root {
+  /* Signature identity */
+  --accent: #e6b873;
+  --accent-soft: rgba(230, 184, 115, 0.16);
+
+  /* Deep neutral stage — quiet, generous */
+  --bg: #0b0c11;
+  --bg-2: #11131b;
+  --surface: #14161f;
+  --surface-2: #191c27;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Type */
+  --fg: #e9ecf2;
+  --fg-dim: #c2c7d4;
+  --muted: #878d9e;
+
+  /* Lane tints — all warm, all derived from the amber accent */
+  --lane-1: hsl(38, 72%, 66%); /* work     — pad   — amber   */
+  --lane-2: hsl(22, 66%, 65%); /* projects — pluck — coral   */
+  --lane-3: hsl(48, 60%, 67%); /* talks    — bell  — gold    */
+  --lane-4: hsl(12, 58%, 63%); /* edu      — bass  — rust    */
+
+  /* Motion / focus */
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --speed: 220ms;
+}
+
+[data-theme="light"] {
+  --accent: #a86d20;
+  --accent-soft: rgba(168, 109, 32, 0.12);
+
+  --bg: #faf8f3;
+  --bg-2: #f3efe7;
+  --surface: #ffffff;
+  --surface-2: #f6f2ea;
+  --border: rgba(20, 16, 8, 0.10);
+  --border-strong: rgba(20, 16, 8, 0.18);
+
+  --fg: #1a1c22;
+  --fg-dim: #3c4049;
+  --muted: #6a7080;
+
+  /* Same hue family, deepened for legibility on light */
+  --lane-1: hsl(38, 52%, 42%);
+  --lane-2: hsl(22, 50%, 43%);
+  --lane-3: hsl(48, 46%, 38%);
+  --lane-4: hsl(12, 44%, 44%);
+
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+/* Respect the OS preference on the very first paint, before main.js runs,
+   so there's no flash of the wrong theme. [data-theme] set by main.js wins. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --accent: #a86d20;
+    --accent-soft: rgba(168, 109, 32, 0.12);
+    --bg: #faf8f3;
+    --bg-2: #f3efe7;
+    --surface: #ffffff;
+    --surface-2: #f6f2ea;
+    --border: rgba(20, 16, 8, 0.10);
+    --border-strong: rgba(20, 16, 8, 0.18);
+    --fg: #1a1c22;
+    --fg-dim: #3c4049;
+    --muted: #6a7080;
+    --lane-1: hsl(38, 52%, 42%);
+    --lane-2: hsl(22, 50%, 43%);
+    --lane-3: hsl(48, 46%, 38%);
+    --lane-4: hsl(12, 44%, 44%);
+  }
+}
