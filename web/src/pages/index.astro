@@ -2,7 +2,8 @@
 import "../styles/theme.css";
 import "../styles/base.css";
 import ThemeToggle from "../components/ThemeToggle.astro";
-import content from "../../content.json";
+import Resume from "../components/Resume.astro";
+import { content } from "../data/content.js";
 
 const { name, tagline, links } = content.meta;
 
@@ -66,8 +67,10 @@ const themeBootstrap = `(function(){try{var k='kj-theme';var s=localStorage.getI
       </nav>
 
       <p class="hero__placeholder muted">
-        <em>The sequencer arrives in the next stage — your career, playable.</em>
+        <em>Below: your career as a timeline. Play + sound arrive next stage.</em>
       </p>
+
+      <Resume />
     </main>
 
     <script>
