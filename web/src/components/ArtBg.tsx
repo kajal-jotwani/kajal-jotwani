@@ -64,7 +64,7 @@ export default function ArtBg() {
         cs.getPropertyValue("--pink").trim() || colors[1],
         cs.getPropertyValue("--green").trim() || colors[2],
       ];
-      alpha = document.documentElement.classList.contains("dark") ? 0.14 : 0.1;
+      alpha = document.documentElement.classList.contains("dark") ? 0.2 : 0.18;
       ctx.clearRect(0, 0, w, h);
     };
 
@@ -115,7 +115,7 @@ export default function ArtBg() {
         }
         ctx.strokeStyle = colors[p.c];
         ctx.globalAlpha = alpha * Math.min(1, p.life / 40);
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.moveTo(p.px, p.py);
         ctx.lineTo(p.x, p.y);
