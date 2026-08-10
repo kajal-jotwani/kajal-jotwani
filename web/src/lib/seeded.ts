@@ -16,7 +16,10 @@ export function seededRng(seed: string): () => number {
   };
 }
 
-/** Bars of a fake audio clip, seeded by name. Returns heights 0..1 */
+/** Bars of a fake audio clip, seeded by name. Returns heights 0..1.
+ *  Rounded to 4 decimals: Math.sin can differ by a ULP between the Node
+ *  server render and the browser, which React reports as a hydration
+ *  mismatch when these land in SVG attributes. */
 export function waveformBars(seed: string, count = 48): number[] {
   const rng = seededRng(seed);
   const bars: number[] = [];
@@ -24,7 +27,7 @@ export function waveformBars(seed: string, count = 48): number[] {
   for (let i = 0; i < count; i++) {
     momentum = Math.max(0.08, Math.min(1, momentum + (rng() - 0.5) * 0.55));
     const envelope = Math.sin((i / (count - 1)) * Math.PI) * 0.6 + 0.4;
-    bars.push(momentum * envelope);
+    bars.push(Math.round(momentum * envelope * 1e4) / 1e4);
   }
   return bars;
 }
