@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-fraunces: "Fraunces Variable";
+  --font-instrument: "Instrument Sans Variable";
+  --font-jetbrains: "JetBrains Mono Variable";
+  --font-shantell: "Shantell Sans Variable";
+  --bg: #fbf7f0;
+  --bg-soft: #f4ede1;
+  --bg-card: #fffdf9;
+  --ink: #1c1822;
+  --muted: #6e6578;
+  --accent: #6d4aff;
+  --accent-soft: rgba(109, 74, 255, 0.1);
+  --pink: #e0407f;
+  --pink-soft: rgba(224, 64, 127, 0.1);
+  --green: #1d9e6e;
+  --green-soft: rgba(29, 158, 110, 0.12);
+  --line: rgba(28, 24, 34, 0.14);
+  --line-strong: rgba(28, 24, 34, 0.32);
+  --wave-opacity: 0.5;
+}
+
+.dark {
+  --bg: #100d16;
+  --bg-soft: #171320;
+  --bg-card: #1a1524;
+  --ink: #f2ede4;
+  --muted: #9a90a8;
+  --accent: #a18aff;
+  --accent-soft: rgba(161, 138, 255, 0.14);
+  --pink: #ff7ab8;
+  --pink-soft: rgba(255, 122, 184, 0.12);
+  --green: #4ade9c;
+  --green-soft: rgba(74, 222, 156, 0.12);
+  --line: rgba(242, 237, 228, 0.14);
+  --line-strong: rgba(242, 237, 228, 0.35);
+  --wave-opacity: 0.65;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-card: var(--bg-card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-pink: var(--pink);
+  --color-pink-soft: var(--pink-soft);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-instrument);
+  --font-mono: var(--font-jetbrains);
+  --font-hand: var(--font-shantell);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ---------- display type ---------- */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: "SOFT" 80, "WONK" 1;
+  font-optical-sizing: auto;
+}
+
+.font-hand {
+  font-family: var(--font-shantell), cursive;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains), monospace;
+}
+
+/* ---------- reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------- wobbly link underline ---------- */
+.squiggle {
+  position: relative;
+  text-decoration: none;
+}
+
+.squiggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 4px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='6' viewBox='0 0 40 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 3 Q 5 0, 10 3 T 20 3 T 30 3 T 40 3' fill='none' stroke='%236d4aff' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-size: 40px 6px;
+  background-repeat: repeat-x;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.squiggle:hover::after,
+.squiggle:focus-visible::after {
+  opacity: 1;
+}
+
+/* ---------- marquee for stack strip ---------- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------- expanding liner notes ---------- */
+.liner {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.liner.open {
+  grid-template-rows: 1fr;
+}
+
+.liner > div {
+  overflow: hidden;
+}
+
+/* ---------- blinking playhead cursor ---------- */
+@keyframes blink {
+  0%, 55% {
+    opacity: 1;
+  }
+  56%, 100% {
+    opacity: 0.15;
+  }
+}
+
+.blink {
+  animation: blink 1.2s steps(1) infinite;
+}
+
+/* ---------- vinyl spin for the ♪ button when playing ---------- */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning {
+  animation: spin 4s linear infinite;
+}
+
+/* ---------- timeline node pulse ---------- */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-soft);
+  }
+  70% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.node-active {
+  animation: pulse-ring 2.4s ease-out infinite;
+}

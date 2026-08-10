@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "title": "Kajal Jotwani — software developer & creative coder",
+    "description": "Backend & systems developer who also makes art and music with code. GSoC '25 · C4GT '25 · open source. This site is an instrument — press play.",
+    "siteUrl": "https://kajal-jotwani.vercel.app",
+    "songDurationSeconds": 216
+  },
+  "identity": {
+    "name": "Kajal Jotwani",
+    "firstName": "Kajal",
+    "role": "Software Developer",
+    "subRole": "backend · systems · creative code",
+    "location": "India",
+    "email": "kajaljotwani06@gmail.com"
+  },
+  "socials": [
+    { "label": "GitHub", "url": "https://github.com/kajal-jotwani" },
+    { "label": "Medium", "url": "https://medium.com/@kajaljotwani06" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kajal-jotwani" },
+    { "label": "Email", "url": "mailto:kajaljotwani06@gmail.com" }
+  ],
+  "hero": {
+    "eyebrow": "now playing",
+    "headlineTop": "Kajal",
+    "headlineBottom": "Jotwani",
+    "roleLine": "I build backends, break systems (on purpose), and sometimes make code sing.",
+    "paragraph": "Third-year CS undergrad into backend engineering, systems, and how intelligent things work under the hood. On the side, I turn algorithms into art and keystrokes into music.",
+    "marginNote": "this page is an instrument — try the ♪ up there",
+    "ctas": [
+      { "label": "Read the work", "href": "#work", "kind": "primary" },
+      { "label": "Book a chat", "href": "#chat", "kind": "ghost" }
+    ]
+  },
+  "about": {
+    "trackTitle": "about",
+    "paragraphs": [
+      "I'm a third-year Computer Science undergrad who likes the unglamorous parts of software: the backends, the protocols, the systems that quietly hold everything up. Currently diving into AI and MCP — understanding how modern intelligent systems are actually built genuinely fascinates me.",
+      "I contribute to open source because it's the best classroom I've found. And when I'm not shipping, I'm usually making generative art or live-coding music — the same loops and functions, just pointed at beauty instead of throughput."
+    ],
+    "currently": [
+      "exploring AI systems & MCP",
+      "contributing to open source",
+      "writing about what I learn"
+    ],
+    "funFacts": [
+      "if I'm not coding, I'm probably running or at the gym",
+      "fueled by coffee, curiosity, and dreams bigger than my comfort zone"
+    ],
+    "stack": ["Python", "TypeScript", "C++", "Node.js", "Three.js", "Blender", "Shaders", "SQL", "Git", "Linux"]
+  },
+  "experience": {
+    "trackTitle": "the timeline",
+    "intro": "every era, laid out like clips on a track.",
+    "entries": [
+      {
+        "id": "gsoc",
+        "time": "summer 2025",
+        "title": "Google Summer of Code — Contributor",
+        "org": "UC OSPO · Brahma-XR",
+        "short": "Built VR experiences for an open-source XR project.",
+        "detail": "Selected as a GSoC '25 contributor with the UC Open Source Program Office. Worked on Brahma-XR, exploring VR development end to end — Three.js scenes, Blender asset pipelines, and custom shaders. Learned how real open-source teams review, argue, and ship.",
+        "tags": ["Three.js", "WebXR", "Blender", "Shaders", "Open Source"],
+        "accent": "violet"
+      },
+      {
+        "id": "c4gt",
+        "time": "2025",
+        "title": "Code for GovTech — Contributor",
+        "org": "ADC Karnal",
+        "short": "Built an Education Management Information System used by a district administration.",
+        "detail": "As a C4GT '25 contributor, built an EMIS for the Additional Deputy Commissioner's office in Karnal — real users, real data, real constraints. Learned what 'production' means when the stakeholder is a government office and downtime is not a vibe.",
+        "tags": ["Backend", "GovTech", "Databases", "Product"],
+        "accent": "pink"
+      },
+      {
+        "id": "lift",
+        "time": "2025",
+        "title": "LiFT Scholar",
+        "org": "The Linux Foundation",
+        "short": "Linux Foundation Training scholarship.",
+        "detail": "Awarded a Linux Foundation Training (LiFT) scholarship — doubling down on systems, Linux, and the infrastructure side of software.",
+        "tags": ["Linux", "Systems"],
+        "accent": "green"
+      },
+      {
+        "id": "wescholar",
+        "time": "2024",
+        "title": "Women Engineers Scholar",
+        "org": "Google × TalentSprint",
+        "short": "Selected for the WE program by Google and TalentSprint.",
+        "detail": "Chosen as a Women Engineers scholar '24 — a two-year engineering excellence program by Google and TalentSprint with mentorship, rigorous coursework, and a community of women who build.",
+        "tags": ["Scholarship", "Mentorship", "CS Fundamentals"],
+        "accent": "violet"
+      }
+    ]
+  },
+  "projects": {
+    "trackTitle": "selected work",
+    "intro": "hover for the sound, toggle for the liner notes.",
+    "items": [
+      {
+        "id": "brahma-xr",
+        "name": "Brahma-XR",
+        "oneLiner": "Open-source VR development under GSoC '25.",
+        "description": "An open-source XR project under the UC Open Source Program Office, where immersive experiences are built with web technologies.",
+        "myWork": "Built and refined VR scenes with Three.js and WebXR; created and optimized 3D assets in Blender; wrote custom shaders for visual effects; collaborated through the full open-source workflow — issues, reviews, iterations — as a Google Summer of Code 2025 contributor.",
+        "tags": ["Three.js", "WebXR", "Blender", "GLSL"],
+        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani" }],
+        "accent": "violet"
+      },
+      {
+        "id": "emis",
+        "name": "EMIS for ADC Karnal",
+        "oneLiner": "An Education Management Information System for a district administration.",
+        "description": "A GovTech system built under Code for GovTech 2025 to help the ADC office in Karnal manage education data across the district.",
+        "myWork": "Designed and built core modules of the EMIS — data models, backend logic, and workflows shaped by conversations with actual government stakeholders. Shipped something a public office depends on, which changed how I think about reliability and simplicity.",
+        "tags": ["Backend", "SQL", "GovTech"],
+        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani" }],
+        "accent": "pink"
+      },
+      {
+        "id": "this-site",
+        "name": "This website",
+        "oneLiner": "A portfolio disguised as an instrument.",
+        "description": "The page you're on. A professional portfolio with a secret: the scroll bar is a playhead, the background is a score, and the keyboard makes music when you let it.",
+        "myWork": "Designed and built with Next.js and a hand-rolled WebAudio engine — no audio libraries. Scroll position crossfades ambient chord layers, keystrokes play a pentatonic scale, and every bit of copy lives in one JSON file. There's a live-codeable version of the score at /play.",
+        "tags": ["Next.js", "WebAudio", "Canvas", "TypeScript"],
+        "links": [{ "label": "Source", "url": "https://github.com/kajal-jotwani/kajal-jotwani" }],
+        "accent": "green"
+      }
+    ]
+  },
+  "blog": {
+    "trackTitle": "field notes",
+    "intro": "I document what I learn — the wins, the walls, the weird bugs.",
+    "mediumUser": "kajaljotwani06",
+    "mediumUrl": "https://medium.com/@kajaljotwani06",
+    "fallbackPosts": [
+      {
+        "title": "Read my writing on Medium",
+        "link": "https://medium.com/@kajaljotwani06",
+        "date": "",
+        "snippet": "Notes from open source, GSoC, systems, and everything I'm figuring out — one post at a time."
+      }
+    ]
+  },
+  "ama": {
+    "trackTitle": "ask me anything",
+    "intro": "Anonymous. No login, no trace — ask about GSoC, code, careers, or the meaning of semicolons.",
+    "placeholder": "type your question… nobody will know it was you",
+    "endpoint": "",
+    "disabledNote": "The anonymous inbox is warming up — meanwhile, my DMs and email are open.",
+    "successNote": "Got it. Your question is on its way — anonymously. 🌱",
+    "buttonLabel": "send it anonymously"
+  },
+  "booking": {
+    "trackTitle": "book a chat",
+    "intro": "Want to talk open source, GSoC, projects, or music-with-code? Pick a slot — it's free and I like meeting people.",
+    "calLink": "",
+    "fallbackLabel": "email me for a slot",
+    "buttonLabel": "find a time"
+  },
+  "play": {
+    "title": "the score",
+    "intro": "This is (roughly) what the site plays. It's live code — edit it, break it, make it yours. Powered by Strudel.",
+    "strudelCode": "// the site's score — edit me and press play\nsetcps(0.4)\n$: note(\"<d3 a3 b3 f#3>\").s(\"gm_pad_warm\").room(.8).gain(.4)\n$: n(\"0 2 4 7 4 2\").scale(\"D4:minor:pentatonic\").s(\"kalimba\").room(.6).gain(\".5\").slow(2)"
+  },
+  "footer": {
+    "line": "built with coffee ☕, curiosity 🧠, and a pentatonic scale ♪",
+    "smallPrint": "© 2026 Kajal Jotwani · content lives in one honest JSON file",
+    "playHint": "psst — the score is live-codeable at /play"
+  }
+}
