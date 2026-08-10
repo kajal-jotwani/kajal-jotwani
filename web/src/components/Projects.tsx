@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { site, type Project } from "@/lib/content";
 import { waveformBars } from "@/lib/seeded";
-import { emit } from "@/lib/bus";
+import { emit, state } from "@/lib/bus";
 import Reveal from "@/components/Reveal";
-import TrackLabel from "@/components/TrackLabel";
+import SectionTitle from "@/components/SectionTitle";
 
 const accentText: Record<string, string> = {
   violet: "text-accent",
@@ -25,17 +25,33 @@ const accentChip: Record<string, string> = {
 
 function Clip({ p, i }: { p: Project; i: number }) {
   const [open, setOpen] = useState(false);
+  const [grooving, setGrooving] = useState(false);
   const bars = waveformBars(p.name);
+
+  const startGroove = () => {
+    if (!state.soundOn) return;
+    emit("beat:start", p.name);
+    setGrooving(true);
+  };
+  const stopGroove = () => {
+    emit("beat:stop");
+    setGrooving(false);
+  };
 
   return (
     <Reveal delay={i * 90} className="h-full">
       <article className="group flex h-full flex-col rounded-2xl border border-line bg-bg-card/70 p-6 backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_12px_40px_-18px_rgba(0,0,0,0.25)]">
-        {/* each project is an audio clip: its own seeded waveform */}
+        {/* each project is an audio clip: its own seeded waveform AND its own
+            drum groove — hover (or tap) to hear it, if ♪ is on */}
         <svg
           viewBox="0 0 192 40"
-          className="mb-5 h-10 w-full opacity-70 transition-opacity group-hover:opacity-100"
-          aria-hidden
-          onMouseEnter={() => emit("plink", (i * 2 + 3) % 8)}
+          role="button"
+          aria-label={`play ${p.name}'s beat (turn sound on first)`}
+          tabIndex={0}
+          className={`mb-5 h-10 w-full cursor-pointer transition-opacity ${grooving ? "opacity-100" : "opacity-70 group-hover:opacity-95"}`}
+          onMouseEnter={startGroove}
+          onMouseLeave={stopGroove}
+          onClick={() => (grooving ? stopGroove() : startGroove())}
         >
           {bars.map((b, j) => (
             <rect
@@ -45,7 +61,7 @@ function Clip({ p, i }: { p: Project; i: number }) {
               width={2.2}
               height={Math.max(2, b * 36)}
               rx={1.1}
-              className={accentFill[p.accent] ?? "fill-accent"}
+              className={`${accentFill[p.accent] ?? "fill-accent"} ${grooving ? "animate-pulse" : ""}`}
               opacity={0.35 + b * 0.65}
             />
           ))}
@@ -117,10 +133,7 @@ export default function Projects() {
   const pr = site.projects;
   return (
     <section data-section id="work" className="mx-auto max-w-5xl px-5 py-24">
-      <TrackLabel n={4} title={pr.trackTitle} />
-      <Reveal>
-        <p className="font-hand mb-10 -rotate-1 text-lg text-muted">{pr.intro}</p>
-      </Reveal>
+      <SectionTitle title={pr.trackTitle} note={pr.intro} />
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {(pr.items as Project[]).map((p, i) => (
           <Clip key={p.id} p={p} i={i} />
