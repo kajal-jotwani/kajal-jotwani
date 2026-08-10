@@ -173,13 +173,13 @@
     "buttonLabel": "find a time"
   },
   "play": {
-    "title": "the score",
-    "intro": "A tiny groove to remix — this is real live code, the same kind performed at algorave concerts. Press play, change a number, hit update, hear it morph. That's music-with-code in one minute.",
+    "title": "the studio",
+    "intro": "Make a beat in ten seconds, then live-code the real thing.",
     "strudelCode": "// kajal's score — a tiny groove to remix ✦\n// press play → then edit ANYTHING and hit update\n\nsetcps(0.5)\n\n// drums — bd kick · sd snare · hh hats. try adding more!\n$: s(\"bd ~ [~ bd] sd, [~ hh]*4\").bank(\"RolandTR808\").gain(.9)\n\n// lazy keys — swap the notes, or .slow(4) it\n$: note(\"<d3 f3 a3 c4>\").s(\"gm_epiano1\").room(.5).slow(2)\n\n// melody — change the numbers, they're scale degrees\n$: n(\"0 [2 4] 7 [4 2]\").scale(\"D:minor:pentatonic\").s(\"kalimba\").room(.7).gain(.6)"
   },
   "footer": {
     "line": "built with coffee ☕, curiosity 🧠, and a pentatonic scale ♪",
     "smallPrint": "© 2026 Kajal Jotwani · content lives in one honest JSON file",
-    "playHint": "psst — the score is live-codeable at /play"
+    "playHint": "psst — the studio is open at /play"
   }
 }

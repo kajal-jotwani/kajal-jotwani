@@ -15,6 +15,14 @@ import { seededRng } from "@/lib/seeded";
 
 const PENTA = [293.66, 349.23, 392.0, 440.0, 523.25, 587.33, 698.46, 783.99]; // D4 F4 G4 A4 C5 D5 F5 G5
 
+export interface BeatPattern {
+  kick: number[];
+  snare: number[];
+  hat: number[];
+  open: number[];
+  bass: number[];
+}
+
 class Engine {
   private ctx: AudioContext | null = null;
   private master!: GainNode;
@@ -27,7 +35,7 @@ class Engine {
   private seqSeed = "";
   private nextStepTime = 0;
   private step = 0;
-  private pattern: { kick: number[]; snare: number[]; hat: number[]; open: number[]; bass: number[] } | null = null;
+  private pattern: BeatPattern | null = null;
 
   start() {
     if (this.running) return;
@@ -199,9 +207,19 @@ class Engine {
     const bass = Array.from({ length: 16 }, (_, i) =>
       i === 0 ? 1 : (i === 7 || i === 10) && rng() > 0.5 ? 1 : 0
     );
-    this.pattern = { kick, snare, hat, open, bass };
-
     const bpm = 88 + Math.floor(rng() * 24); // each project has its own tempo too
+    this.startPattern({ kick, snare, hat, open, bass }, bpm, seed);
+  }
+
+  /** Play an arbitrary pattern (the /play drum machine uses this).
+   *  The pattern object is read live each tick, so callers can mutate
+   *  its arrays while the beat runs and hear changes instantly. */
+  startPattern(pattern: BeatPattern, bpm: number, label = "custom") {
+    if (!this.ctx || !this.running) return;
+    this.stopBeat();
+    this.seqSeed = label;
+    this.pattern = pattern;
+
     const stepDur = 60 / bpm / 4;
     this.step = 0;
     this.nextStepTime = this.ctx.currentTime + 0.06;
