@@ -4,7 +4,13 @@ export type Accent = "violet" | "pink" | "green";
 
 export interface Social {
   label: string;
+  icon?: string;
   url: string;
+}
+
+export interface StackItem {
+  name: string;
+  icon: string;
 }
 
 export interface ExperienceEntry {

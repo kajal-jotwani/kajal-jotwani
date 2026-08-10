@@ -1,12 +1,13 @@
 import { site } from "@/lib/content";
 import Reveal from "@/components/Reveal";
-import TrackLabel from "@/components/TrackLabel";
+import SectionTitle from "@/components/SectionTitle";
+import Icon from "@/components/Icons";
 
 export default function About() {
   const a = site.about;
   return (
     <section data-section id="about" className="mx-auto max-w-5xl px-5 py-24">
-      <TrackLabel n={2} title={a.trackTitle} />
+      <SectionTitle title={a.trackTitle} />
       <div className="grid gap-12 md:grid-cols-[3fr_2fr]">
         <Reveal>
           <div className="space-y-5 text-[17px] leading-relaxed">
@@ -50,13 +51,14 @@ export default function About() {
       {/* stack marquee */}
       <Reveal delay={200}>
         <div className="marquee mt-16 overflow-hidden border-y border-line py-3" aria-label="tech stack">
-          <div className="marquee-track flex w-max gap-8">
+          <div className="marquee-track flex w-max items-center gap-10">
             {[...a.stack, ...a.stack].map((s, i) => (
               <span
                 key={i}
-                className="font-mono text-[13px] lowercase tracking-widest text-muted"
+                className="flex items-center gap-2.5 font-mono text-[13px] lowercase tracking-widest text-muted transition-colors hover:text-ink"
               >
-                {s} <span className="text-accent">·</span>
+                <Icon name={s.icon} className="h-5 w-5 opacity-80" />
+                {s.name}
               </span>
             ))}
           </div>

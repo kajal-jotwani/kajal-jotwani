@@ -1,6 +1,6 @@
 "use client";
 
-/** Tiny event bus so the audio engine, waveform and playhead can talk
+/** Tiny event bus so the audio engine, art canvas and playhead can talk
  *  without a state library. */
 type Handler = (payload?: unknown) => void;
 

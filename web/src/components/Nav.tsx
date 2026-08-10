@@ -7,7 +7,7 @@ import { SoundToggle, ThemeToggle } from "@/components/Toggles";
 
 const links = [
   { label: "about", href: "#about" },
-  { label: "timeline", href: "#timeline" },
+  { label: "journey", href: "#timeline" },
   { label: "work", href: "#work" },
   { label: "notes", href: "#notes" },
   { label: "chat", href: "#chat" },
