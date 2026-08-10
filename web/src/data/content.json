@@ -11,13 +11,14 @@
     "role": "Software Developer",
     "subRole": "backend · systems · creative code",
     "location": "India",
-    "email": "kajaljotwani06@gmail.com"
+    "email": "kajaljotwani06@gmail.com",
+    "avatar": "/me.webp"
   },
   "socials": [
-    { "label": "GitHub", "url": "https://github.com/kajal-jotwani" },
-    { "label": "Medium", "url": "https://medium.com/@kajaljotwani06" },
-    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kajal-jotwani" },
-    { "label": "Email", "url": "mailto:kajaljotwani06@gmail.com" }
+    { "label": "GitHub", "icon": "github", "url": "https://github.com/kajal-jotwani" },
+    { "label": "Medium", "icon": "medium", "url": "https://medium.com/@kajaljotwani06" },
+    { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/kajal-jotwani" },
+    { "label": "Email", "icon": "mail", "url": "mailto:kajaljotwani06@gmail.com" }
   ],
   "hero": {
     "eyebrow": "now playing",
@@ -46,11 +47,22 @@
       "if I'm not coding, I'm probably running or at the gym",
       "fueled by coffee, curiosity, and dreams bigger than my comfort zone"
     ],
-    "stack": ["Python", "TypeScript", "C++", "Node.js", "Three.js", "Blender", "Shaders", "SQL", "Git", "Linux"]
+    "stack": [
+      { "name": "Python", "icon": "python" },
+      { "name": "TypeScript", "icon": "typescript" },
+      { "name": "C++", "icon": "cplusplus" },
+      { "name": "Node.js", "icon": "nodedotjs" },
+      { "name": "Three.js", "icon": "threedotjs" },
+      { "name": "Blender", "icon": "blender" },
+      { "name": "Shaders", "icon": "opengl" },
+      { "name": "SQL", "icon": "postgresql" },
+      { "name": "Git", "icon": "git" },
+      { "name": "Linux", "icon": "linux" }
+    ]
   },
   "experience": {
-    "trackTitle": "the timeline",
-    "intro": "every era, laid out like clips on a track.",
+    "trackTitle": "the journey",
+    "intro": "step by step, curiosity did the steering — tap a step for the full story.",
     "entries": [
       {
         "id": "gsoc",
@@ -96,7 +108,7 @@
   },
   "projects": {
     "trackTitle": "selected work",
-    "intro": "hover for the sound, toggle for the liner notes.",
+    "intro": "turn ♪ on, then hover a waveform — every project has its own beat.",
     "items": [
       {
         "id": "brahma-xr",
@@ -123,7 +135,7 @@
         "name": "This website",
         "oneLiner": "A portfolio disguised as an instrument.",
         "description": "The page you're on. A professional portfolio with a secret: the scroll bar is a playhead, the background is a score, and the keyboard makes music when you let it.",
-        "myWork": "Designed and built with Next.js and a hand-rolled WebAudio engine — no audio libraries. Scroll position crossfades ambient chord layers, keystrokes play a pentatonic scale, and every bit of copy lives in one JSON file. There's a live-codeable version of the score at /play.",
+        "myWork": "Designed and built with Next.js and a hand-rolled WebAudio engine — no audio libraries. The background is a generative flow field, keystrokes play an FM e-piano, and every project card gets a drum groove seeded by its own name. All copy lives in one JSON file, and the score is live-codeable at /play.",
         "tags": ["Next.js", "WebAudio", "Canvas", "TypeScript"],
         "links": [{ "label": "Source", "url": "https://github.com/kajal-jotwani/kajal-jotwani" }],
         "accent": "green"
@@ -162,8 +174,8 @@
   },
   "play": {
     "title": "the score",
-    "intro": "This is (roughly) what the site plays. It's live code — edit it, break it, make it yours. Powered by Strudel.",
-    "strudelCode": "// the site's score — edit me and press play\nsetcps(0.4)\n$: note(\"<d3 a3 b3 f#3>\").s(\"gm_pad_warm\").room(.8).gain(.4)\n$: n(\"0 2 4 7 4 2\").scale(\"D4:minor:pentatonic\").s(\"kalimba\").room(.6).gain(\".5\").slow(2)"
+    "intro": "A tiny groove to remix — this is real live code, the same kind performed at algorave concerts. Press play, change a number, hit update, hear it morph. That's music-with-code in one minute.",
+    "strudelCode": "// kajal's score — a tiny groove to remix ✦\n// press play → then edit ANYTHING and hit update\n\nsetcps(0.5)\n\n// drums — bd kick · sd snare · hh hats. try adding more!\n$: s(\"bd ~ [~ bd] sd, [~ hh]*4\").bank(\"RolandTR808\").gain(.9)\n\n// lazy keys — swap the notes, or .slow(4) it\n$: note(\"<d3 f3 a3 c4>\").s(\"gm_epiano1\").room(.5).slow(2)\n\n// melody — change the numbers, they're scale degrees\n$: n(\"0 [2 4] 7 [4 2]\").scale(\"D:minor:pentatonic\").s(\"kalimba\").room(.7).gain(.6)"
   },
   "footer": {
     "line": "built with coffee ☕, curiosity 🧠, and a pentatonic scale ♪",
