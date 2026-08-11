@@ -209,6 +209,39 @@ body {
   animation: spin 4s linear infinite;
 }
 
+/* ---------- harmonograph: keep the reading column clear ----------
+   The drawing is carved out of the middle of the viewport so it only ever
+   lives in the margins around the text. */
+.harmonograph-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 66% at 50% 45%,
+    transparent 60%,
+    black 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 60% 66% at 50% 45%,
+    transparent 60%,
+    black 100%
+  );
+}
+
+/* narrow screens have no margins — the text spans everything, so pull it back */
+@media (max-width: 1000px) {
+  .harmonograph-mask {
+    opacity: 0.35;
+    -webkit-mask-image: radial-gradient(
+      ellipse 96% 62% at 50% 45%,
+      transparent 62%,
+      black 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 96% 62% at 50% 45%,
+      transparent 62%,
+      black 100%
+    );
+  }
+}
+
 /* ---------- life-post prose ---------- */
 .prose-life {
   font-size: 17px;
