@@ -209,34 +209,36 @@ body {
   animation: spin 4s linear infinite;
 }
 
-/* ---------- harmonograph: keep the reading column clear ----------
-   The drawing is carved out of the middle of the viewport so it only ever
+/* ---------- blog art: keep the reading column clear ----------
+   The figure is carved out of the middle of the viewport so it only ever
    lives in the margins around the text. */
-.harmonograph-mask {
+.blog-art-mask {
   -webkit-mask-image: radial-gradient(
-    ellipse 60% 66% at 50% 45%,
-    transparent 60%,
-    black 100%
+    ellipse 52% 62% at 50% 45%,
+    transparent 46%,
+    rgba(0, 0, 0, 0.55) 74%,
+    black 94%
   );
   mask-image: radial-gradient(
-    ellipse 60% 66% at 50% 45%,
-    transparent 60%,
-    black 100%
+    ellipse 52% 62% at 50% 45%,
+    transparent 46%,
+    rgba(0, 0, 0, 0.55) 74%,
+    black 94%
   );
 }
 
-/* narrow screens have no margins — the text spans everything, so pull it back */
+/* narrow screens have no margins — the text spans everything, so pull back */
 @media (max-width: 1000px) {
-  .harmonograph-mask {
+  .blog-art-mask {
     opacity: 0.35;
     -webkit-mask-image: radial-gradient(
-      ellipse 96% 62% at 50% 45%,
-      transparent 62%,
+      ellipse 96% 60% at 50% 45%,
+      transparent 58%,
       black 100%
     );
     mask-image: radial-gradient(
-      ellipse 96% 62% at 50% 45%,
-      transparent 62%,
+      ellipse 96% 60% at 50% 45%,
+      transparent 58%,
       black 100%
     );
   }

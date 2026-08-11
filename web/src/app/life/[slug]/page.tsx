@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getLifePost, getLifePosts } from "@/lib/life";
-import { harmonograph } from "@/lib/harmonograph";
-import HarmonographBg from "@/components/HarmonographBg";
+import { chladni } from "@/lib/chladni";
+import ChladniBg from "@/components/ChladniBg";
 import { site } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -32,13 +32,12 @@ export default async function LifePostPage({
   const post = getLifePost(slug);
   if (!post) notFound();
 
-  // this post's artwork — same seed every build, unique to this post
-  const art = harmonograph(post.slug);
-  const [a, b] = art.intervals;
+  // this post's sand figure — same seed every build, unique to this post
+  const art = chladni(post.slug);
 
   return (
     <>
-      <HarmonographBg params={art} />
+      <ChladniBg params={art} />
 
       <article className="relative mx-auto max-w-2xl px-5 py-16">
         <Link
@@ -68,42 +67,38 @@ export default async function LifePostPage({
           </Link>
         </p>
 
-        {/* the liner note for the drawing behind you */}
+        {/* the liner note for the figure behind you */}
         <footer className="mt-14 border-t border-line pt-6">
           <p className="font-mono text-[10px] tracking-[0.25em] text-muted">
-            ABOUT THE DRAWING BEHIND THIS PAGE
+            ABOUT THE SAND BEHIND THIS PAGE
           </p>
           <p className="mt-3 text-[14px] leading-relaxed text-muted">
             It&apos;s a{" "}
             <a
-              href="https://en.wikipedia.org/wiki/Harmonograph"
+              href="https://en.wikipedia.org/wiki/Chladni_figure"
               target="_blank"
               rel="noreferrer"
               className="squiggle text-accent"
             >
-              harmonograph
-            </a>{" "}
-            — a Victorian machine where two swinging pendulums hold a pen, and their
-            sum traces one long, decaying line:{" "}
-            <code className="font-mono text-[13px]">
-              x(t) = Σ aᵢ·sin(fᵢt + φᵢ)·e
-              <sup>−dᵢt</sup>
-            </code>
-            . This one is tuned to a{" "}
-            <span className="text-ink">
-              {a.name} ({a.label})
-            </span>{" "}
-            and a{" "}
-            <span className="text-ink">
-              {b.name} ({b.label})
-            </span>
-            .
+              Chladni figure
+            </a>
+            : scatter sand on a metal plate, draw a violin bow across its edge, and the
+            grains leap away from the vibrating regions to settle along the lines where
+            the plate stays silent. Sound, made visible — Ernst Chladni toured Europe
+            with this trick in 1787.
           </p>
           <p className="mt-3 text-[14px] leading-relaxed text-muted">
-            Those are musical intervals. A perfect fifth is the ratio 3:2 whether you
-            hear it or draw it — consonance and symmetry turn out to be the same
-            arithmetic. The shape is seeded by this post&apos;s name, so it belongs to
-            this page and no other.
+            When you opened this page, {art.n * 1000 + art.m > 0 ? "a few thousand" : ""}{" "}
+            simulated grains did exactly that, jumping wherever{" "}
+            <code className="font-mono text-[13px]">
+              cos({art.n}πx)cos({art.m}πy) ± cos({art.m}πx)cos({art.n}πy)
+            </code>{" "}
+            was loud until they found its silence. This page hums in mode{" "}
+            <span className="text-ink">
+              ({art.n}, {art.m})
+            </span>
+            , seeded by the post&apos;s name — every post on this site strikes a different
+            chord in the sand.
           </p>
         </footer>
       </article>
