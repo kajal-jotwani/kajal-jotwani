@@ -4,6 +4,7 @@ import Link from "next/link";
 import { site } from "@/lib/content";
 import { emit } from "@/lib/bus";
 import { SoundToggle, ThemeToggle } from "@/components/Toggles";
+import Logo from "@/components/Logo";
 
 const links = [
   { label: "about", href: "#about" },
@@ -19,11 +20,15 @@ export default function Nav() {
       <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5">
         <Link
           href="/"
-          className="font-hand text-lg tracking-wide text-ink"
+          aria-label={`${site.identity.name} — home`}
+          className="group flex items-center gap-2 text-ink"
           onMouseEnter={() => emit("plink", 7)}
         >
-          {site.identity.firstName}
-          <span className="text-accent">.</span>
+          <Logo className="h-5 w-5 transition-transform duration-300 group-hover:scale-y-125" />
+          <span className="font-hand text-lg tracking-wide">
+            {site.identity.firstName}
+            <span className="text-accent">.</span>
+          </span>
         </Link>
         <div className="hidden items-center gap-6 md:flex">
           {links.map((l, i) => (

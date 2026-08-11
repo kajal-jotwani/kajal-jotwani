@@ -5,6 +5,8 @@ import { getLifePost, getLifePosts } from "@/lib/life";
 import { chladni } from "@/lib/chladni";
 import ChladniBg from "@/components/ChladniBg";
 import { site } from "@/lib/content";
+import JsonLd from "@/components/JsonLd";
+import { blogPostingSchema, pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getLifePosts().map((p) => ({ slug: p.slug }));
@@ -17,10 +19,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getLifePost(slug);
-  return {
-    title: post ? `${post.title} — ${site.identity.name}` : site.meta.title,
-    description: post?.snippet,
-  };
+  if (!post) return { title: site.meta.title, description: site.meta.description };
+
+  return pageMeta({
+    title: post.title,
+    description: post.snippet,
+    path: `/life/${post.slug}`,
+    publishedTime: post.date ? new Date(post.date).toISOString() : undefined,
+  });
 }
 
 export default async function LifePostPage({
@@ -37,6 +43,7 @@ export default async function LifePostPage({
 
   return (
     <>
+      <JsonLd schema={blogPostingSchema(post)} />
       <ChladniBg params={art} />
 
       <article className="relative mx-auto max-w-2xl px-5 py-16">

@@ -1,13 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { site } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 import PlayGround from "@/components/PlayGround";
 
-export const metadata: Metadata = {
-  title: `the studio — ${site.identity.name}`,
+export const metadata: Metadata = pageMeta({
+  title: site.play.title,
   description:
-    "Make a beat in ten seconds, then live-code the real thing. No musical or coding experience required.",
-};
+    "Make a beat in ten seconds, then live-code the real thing with Strudel. No musical or coding experience required.",
+  path: "/play",
+});
 
 const MISSIONS = [
   {

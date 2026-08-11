@@ -30,11 +30,15 @@ export default function Hero() {
         {avatar && (
           <Reveal delay={140}>
             <div className="relative shrink-0">
+              {/* 352 = 2× the 176px box it renders in: next/image builds its
+                  srcset from these, and declaring 176 capped it at 384px, which
+                  upscaled and blurred on retina. */}
               <Image
                 src={avatar}
-                alt={site.identity.name}
-                width={176}
-                height={176}
+                alt={`${site.identity.name} — portrait`}
+                width={352}
+                height={352}
+                quality={90}
                 priority
                 className="h-32 w-32 rotate-[-4deg] rounded-3xl border-4 border-bg-card object-cover shadow-[0_16px_40px_-16px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:rotate-[2deg] hover:scale-105 sm:h-40 sm:w-40 md:h-44 md:w-44"
               />

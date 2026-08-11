@@ -10,10 +10,13 @@ import Ama from "@/components/Ama";
 import Booking from "@/components/Booking";
 import Footer from "@/components/Footer";
 import SectionTitle from "@/components/SectionTitle";
+import JsonLd from "@/components/JsonLd";
+import { personSchema, websiteSchema } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
+      <JsonLd schema={[personSchema(), websiteSchema()]} />
       <ArtBg />
       <Playhead />
       <Nav />
