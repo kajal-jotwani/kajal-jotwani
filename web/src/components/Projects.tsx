@@ -39,8 +39,8 @@ function Clip({ p, i }: { p: Project; i: number }) {
   };
 
   return (
-    <Reveal delay={i * 90} className="h-full">
-      <article className="group flex h-full flex-col rounded-2xl border border-line bg-bg-card/70 p-6 backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_12px_40px_-18px_rgba(0,0,0,0.25)]">
+    <Reveal delay={i * 90}>
+      <article className="group flex flex-col rounded-2xl border border-line bg-bg-card/70 p-6 backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_12px_40px_-18px_rgba(0,0,0,0.25)]">
         {/* each project is an audio clip: its own seeded waveform AND its own
             drum groove — hover (or tap) to hear it, if ♪ is on */}
         <svg
@@ -74,7 +74,7 @@ function Clip({ p, i }: { p: Project; i: number }) {
           </span>
         </div>
         <p className="mt-1 text-[15px] font-medium">{p.oneLiner}</p>
-        <p className="mt-3 flex-1 text-[14px] leading-relaxed text-muted">{p.description}</p>
+        <p className="mt-3 text-[14px] leading-relaxed text-muted">{p.description}</p>
 
         <div className={`liner ${open ? "open" : ""}`}>
           <div>
@@ -134,7 +134,7 @@ export default function Projects() {
   return (
     <section data-section id="work" className="mx-auto max-w-5xl px-5 py-24">
       <SectionTitle title={pr.trackTitle} note={pr.intro} />
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
         {(pr.items as Project[]).map((p, i) => (
           <Clip key={p.id} p={p} i={i} />
         ))}
