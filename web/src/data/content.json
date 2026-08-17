@@ -254,17 +254,18 @@
     "trackTitle": "ask me anything",
     "intro": "Anonymous. No login, no trace — ask about GSoC, code, careers, or the meaning of semicolons.",
     "placeholder": "type your question… nobody will know it was you",
-    "endpoint": "",
+    "endpoint": "https://formsubmit.co/ajax/kajaljotwani06@gmail.com",
     "disabledNote": "The anonymous inbox is warming up — meanwhile, my DMs and email are open.",
     "successNote": "Got it. Your question is on its way — anonymously. 🌱",
     "buttonLabel": "send it anonymously"
   },
   "booking": {
-    "trackTitle": "book a chat",
-    "intro": "Want to talk open source, GSoC, projects, or music-with-code? Pick a slot — it's free and I like meeting people.",
-    "calLink": "",
-    "fallbackLabel": "email me for a slot",
-    "buttonLabel": "find a time"
+    "trackTitle": "let's build something together",
+    "intro": "open to opportunities, collaborations, and good conversations — book a slot on my calendar or drop me a line.",
+    "calUrl": "https://cal.com/kajal-jotwani/30min?overlayCalendar=true",
+    "scheduleLabel": "schedule a meeting",
+    "emailLabel": "email me",
+    "findMeOn": "find me on"
   },
   "play": {
     "title": "the studio",

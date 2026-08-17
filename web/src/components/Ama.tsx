@@ -19,7 +19,12 @@ export default function Ama() {
       const res = await fetch(a.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ question: text.trim() }),
+        body: JSON.stringify({
+          question: text.trim(),
+          _subject: "🌱 anonymous question — kajaljotwani.me",
+          _template: "box",
+          _captcha: "false",
+        }),
       });
       if (!res.ok) throw new Error();
       setStatus("done");
