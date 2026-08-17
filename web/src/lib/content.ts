@@ -21,6 +21,7 @@ export interface ExperienceEntry {
   short: string;
   detail: string;
   tags: string[];
+  link?: { label: string; url: string };
   accent: string;
 }
 

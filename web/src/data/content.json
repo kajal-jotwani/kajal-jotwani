@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kajal Jotwani — software developer & creative coder",
-    "description": "Backend & systems developer who also makes art and music with code. GSoC '25 · C4GT '25 · open source. This site is an instrument — press play.",
+    "description": "Backend & systems developer who also makes art and music with code. GSoC '25 · C4GT '25 · ESoC '25 · open source. This site is an instrument — press play.",
     "siteUrl": "https://kajal-jotwani.vercel.app",
     "songDurationSeconds": 216
   },
@@ -25,7 +25,7 @@
     "headlineTop": "Kajal",
     "headlineBottom": "Jotwani",
     "roleLine": "I build backends, break systems (on purpose), and sometimes make code sing.",
-    "paragraph": "Third-year CS undergrad into backend engineering, systems, and how intelligent things work under the hood. On the side, I turn algorithms into art and keystrokes into music.",
+    "paragraph": "Final-year CS undergrad into backend engineering, systems, and how intelligent things work under the hood. On the side, I turn algorithms into art and keystrokes into music.",
     "marginNote": "this page is an instrument — try the ♪ up there",
     "ctas": [
       { "label": "Read the work", "href": "#work", "kind": "primary" },
@@ -35,12 +35,13 @@
   "about": {
     "trackTitle": "about",
     "paragraphs": [
-      "I'm a third-year Computer Science undergrad who likes the unglamorous parts of software: the backends, the protocols, the systems that quietly hold everything up. Currently diving into AI and MCP — understanding how modern intelligent systems are actually built genuinely fascinates me.",
+      "I'm a final-year Computer Science undergrad who likes the unglamorous parts of software: the backends, the protocols, the systems that quietly hold everything up. Currently diving into AI and MCP — understanding how modern intelligent systems are actually built genuinely fascinates me.",
       "I contribute to open source because it's the best classroom I've found. And when I'm not shipping, I'm usually making generative art or live-coding music — the same loops and functions, just pointed at beauty instead of throughput."
     ],
     "currently": [
       "exploring AI systems & MCP",
-      "contributing to open source",
+      "contributing to pixi (Rust) via European Summer of Code",
+      "Linux Foundation LiFT '25 scholar",
       "writing about what I learn"
     ],
     "funFacts": [
@@ -65,43 +66,46 @@
     "intro": "step by step, curiosity did the steering — tap a step for the full story.",
     "entries": [
       {
-        "id": "gsoc",
-        "time": "summer 2025",
-        "title": "Google Summer of Code — Contributor",
-        "org": "UC OSPO · Brahma-XR",
-        "short": "Built VR experiences for an open-source XR project.",
-        "detail": "Selected as a GSoC '25 contributor with the UC Open Source Program Office. Worked on Brahma-XR, exploring VR development end to end — Three.js scenes, Blender asset pipelines, and custom shaders. Learned how real open-source teams review, argue, and ship.",
-        "tags": ["Three.js", "WebXR", "Blender", "Shaders", "Open Source"],
-        "accent": "violet"
-      },
-      {
-        "id": "c4gt",
-        "time": "2025",
-        "title": "Code for GovTech — Contributor",
-        "org": "ADC Karnal",
-        "short": "Built an Education Management Information System used by a district administration.",
-        "detail": "As a C4GT '25 contributor, built an EMIS for the Additional Deputy Commissioner's office in Karnal — real users, real data, real constraints. Learned what 'production' means when the stakeholder is a government office and downtime is not a vibe.",
-        "tags": ["Backend", "GovTech", "Databases", "Product"],
-        "accent": "pink"
-      },
-      {
-        "id": "lift",
-        "time": "2025",
-        "title": "LiFT Scholar",
-        "org": "The Linux Foundation",
-        "short": "Linux Foundation Training scholarship.",
-        "detail": "Awarded a Linux Foundation Training (LiFT) scholarship — doubling down on systems, Linux, and the infrastructure side of software.",
-        "tags": ["Linux", "Systems"],
-        "accent": "green"
-      },
-      {
         "id": "wescholar",
         "time": "2024",
         "title": "Women Engineers Scholar",
         "org": "Google × TalentSprint",
         "short": "Selected for the WE program by Google and TalentSprint.",
-        "detail": "Chosen as a Women Engineers scholar '24 — a two-year engineering excellence program by Google and TalentSprint with mentorship, rigorous coursework, and a community of women who build.",
+        "detail": "Chosen as a Women Engineers scholar '24 — a two-year engineering excellence program by Google and TalentSprint with mentorship, rigorous coursework, and a community of women who build. That community later became WE4US, a platform I now contribute to.",
         "tags": ["Scholarship", "Mentorship", "CS Fundamentals"],
+        "accent": "violet"
+      },
+      {
+        "id": "gsoc",
+        "time": "summer 2025",
+        "title": "Google Summer of Code — Contributor",
+        "org": "UC OSPO · Brahma-XR",
+        "short": "Helped take a WebXR research framework from private repo to public open source.",
+        "detail": "Brahma-XR is a framework for collaborative WebXR rooms with spatial data — the same code runs in the browser and on Apple Vision Pro, Meta Quest 3 and Varjo. As it moved from a private research repository to a public open-source project, I shaped the project structure, built the static documentation site, and created the routing system for running and showcasing examples — the foundation future contributors build on.",
+        "tags": ["WebXR", "Three.js", "Docs Engineering", "Open Source"],
+        "link": { "label": "read the final report", "url": "https://github.com/kajal-jotwani/GSoC25" },
+        "accent": "pink"
+      },
+      {
+        "id": "c4gt",
+        "time": "2025",
+        "title": "Code for GovTech — Contributor",
+        "org": "ADC Karnal · Dedicated Mentoring Program",
+        "short": "Built an Education Management Information System for a district administration.",
+        "detail": "Built an EMIS for the Additional Deputy Commissioner's office in Karnal under C4GT's Dedicated Mentoring Program '25 — daily attendance, marks and subject-level performance, rolled up so district administrators see schools, schools see classes, and teachers see individual students. Real users, real data, and downtime is not a vibe.",
+        "tags": ["Backend", "GovTech", "Databases", "Product"],
+        "link": { "label": "view the project", "url": "https://github.com/kajal-jotwani/ADC_Karnal-EMIMS" },
+        "accent": "green"
+      },
+      {
+        "id": "esoc",
+        "time": "2025 · now",
+        "title": "European Summer of Code — Contributor",
+        "org": "prefix.dev · pixi",
+        "short": "Shipping Rust into pixi, the fast package manager.",
+        "detail": "Contributing to pixi through European Summer of Code — CLI behavior, build tooling and dependency handling. Shipped selective cargo binary installation in the pixi-build-rust backend, a --executable flag so pixi run works even when task names collide, and uv-style dependency sorting & formatting that keeps diffs small and comments intact.",
+        "tags": ["Rust", "CLI", "Build Tooling", "Open Source"],
+        "link": { "label": "see my pixi PRs", "url": "https://github.com/prefix-dev/pixi/pulls?q=is%3Apr+author%3Akajal-jotwani" },
         "accent": "violet"
       }
     ]
@@ -111,34 +115,124 @@
     "intro": "turn ♪ on, then hover a waveform — every project has its own beat.",
     "items": [
       {
-        "id": "brahma-xr",
-        "name": "Brahma-XR",
-        "oneLiner": "Open-source VR development under GSoC '25.",
-        "description": "An open-source XR project under the UC Open Source Program Office, where immersive experiences are built with web technologies.",
-        "myWork": "Built and refined VR scenes with Three.js and WebXR; created and optimized 3D assets in Blender; wrote custom shaders for visual effects; collaborated through the full open-source workflow — issues, reviews, iterations — as a Google Summer of Code 2025 contributor.",
-        "tags": ["Three.js", "WebXR", "Blender", "GLSL"],
-        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani" }],
+        "id": "sentinelforge",
+        "name": "SentinelForge",
+        "oneLiner": "A privacy-first AI developer platform.",
+        "description": "Ask questions about your documents and code and get answers with citations you can click through to the exact page or line. Give it a coding task and get a plan, the evidence, a unified diff, and real test output from a disposable copy of your repo — nothing is written until you press Approve.",
+        "myWork": "Designed and built the whole platform in strictly-typed Python: local-first retrieval with on-device embeddings and a SQLite index, patch generation run in a sandbox, 12 MCP tools, Ollama support for fully offline use, and a 1,000+ test suite — all of it running in 512MB.",
+        "tags": ["Python", "FastAPI", "MCP", "RAG"],
+        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani/SENTINELFORGE" }],
         "accent": "violet"
       },
       {
-        "id": "emis",
-        "name": "EMIS for ADC Karnal",
-        "oneLiner": "An Education Management Information System for a district administration.",
-        "description": "A GovTech system built under Code for GovTech 2025 to help the ADC office in Karnal manage education data across the district.",
-        "myWork": "Designed and built core modules of the EMIS — data models, backend logic, and workflows shaped by conversations with actual government stakeholders. Shipped something a public office depends on, which changed how I think about reliability and simplicity.",
-        "tags": ["Backend", "SQL", "GovTech"],
-        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani" }],
+        "id": "codemind",
+        "name": "CodeMind",
+        "oneLiner": "The repo that remembers.",
+        "description": "A persistent memory graph for a codebase — it stores why the code is the way it is, watches new commits, and when someone unknowingly contradicts an established decision it forces a reconciliation: confirm the change is intentional, or catch the regression before it ships.",
+        "myWork": "Built on Cognee Cloud for the WeMakeDevs hackathon — commit watching, contradiction detection against the memory graph, and the reconciliation flow where the memory itself can be wrong, get challenged, and correct itself, the way a real teammate's understanding would.",
+        "tags": ["Python", "Knowledge Graphs", "Cognee", "AI"],
+        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani/CodeMind" }],
         "accent": "pink"
+      },
+      {
+        "id": "gogitviz",
+        "name": "GoGitViz",
+        "oneLiner": "Your true contribution graph, in the terminal.",
+        "description": "GitHub's graph only counts what you push to GitHub. GoGitViz scans every local repository on your machine — private, offline, GitLab, all of it — and renders a colored GitHub-style heatmap of your real commit history, right in the terminal.",
+        "myWork": "Written in Go: filesystem-wide repo discovery, commit indexing by author email, and a configurable six-month heatmap drawn with terminal colors. Built because my actual coding activity deserved a truthful picture.",
+        "tags": ["Go", "CLI", "Git"],
+        "links": [{ "label": "GitHub", "url": "https://github.com/kajal-jotwani/GoGitViz" }],
+        "accent": "green"
+      },
+      {
+        "id": "we4us",
+        "name": "WE4US",
+        "oneLiner": "Community platform for the Women Engineers program.",
+        "description": "An alumni-portal-cum-community-page for the Google × TalentSprint WE community — the program I was a scholar in — built around Lemmy with a React frontend and Phoenix services.",
+        "myWork": "Contributor on the platform my own cohort uses: merged pull requests across the React/TypeScript frontend and the Lemmy integration — features, fixes, and plumbing.",
+        "tags": ["React", "TypeScript", "Lemmy", "Phoenix"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/Tara-1022/WE4US" },
+          { "label": "my PRs", "url": "https://github.com/Tara-1022/WE4US/pulls?q=is%3Apr+author%3Akajal-jotwani+is%3Aclosed" }
+        ],
+        "accent": "violet"
       },
       {
         "id": "this-site",
         "name": "This website",
         "oneLiner": "A portfolio disguised as an instrument.",
-        "description": "The page you're on. A professional portfolio with a secret: the scroll bar is a playhead, the background is a score, and the keyboard makes music when you let it.",
-        "myWork": "Designed and built with Next.js and a hand-rolled WebAudio engine — no audio libraries. The background is a generative flow field, keystrokes play an FM e-piano, and every project card gets a drum groove seeded by its own name. All copy lives in one JSON file, and the score is live-codeable at /play.",
+        "description": "The page you're on. A professional portfolio with a secret: the scroll bar is a playhead, the background is generative art, and the keyboard makes music when you let it.",
+        "myWork": "Designed and built with Next.js and a hand-rolled WebAudio engine — no audio libraries. The background is a generative flow field, keystrokes play an FM e-piano, every project card gets a drum groove seeded by its own name, and blog posts settle Chladni sand figures. All copy lives in one JSON file; the score is live-codeable at /play.",
         "tags": ["Next.js", "WebAudio", "Canvas", "TypeScript"],
         "links": [{ "label": "Source", "url": "https://github.com/kajal-jotwani/kajal-jotwani" }],
         "accent": "green"
+      }
+    ]
+  },
+  "oss": {
+    "trackTitle": "open source",
+    "intro": "the orgs I've shipped code into — every card links to the receipts.",
+    "featured": {
+      "name": "pixi",
+      "org": "prefix.dev",
+      "logo": "https://github.com/prefix-dev.png",
+      "url": "https://github.com/prefix-dev/pixi",
+      "lang": "Rust",
+      "blurb": "Actively contributing to the pixi package manager — CLI behavior, build tooling, and dependency handling.",
+      "prs": [
+        {
+          "id": "#5537",
+          "title": "Selective cargo binary installation",
+          "desc": "A binaries option in the pixi-build-rust backend that maps to cargo install --bin — finer control over installed artifacts, default behavior preserved when unspecified.",
+          "url": "https://github.com/prefix-dev/pixi/pull/5537",
+          "state": "merged"
+        },
+        {
+          "id": "#5253",
+          "title": "--executable flag for pixi run",
+          "desc": "Run binaries even when task names collide — resolves ambiguity in command resolution, with documentation and tests.",
+          "url": "https://github.com/prefix-dev/pixi/pull/5253",
+          "state": "merged"
+        },
+        {
+          "id": "#5677",
+          "title": "Dependency sorting & formatting",
+          "desc": "uv-style sorting and multiline formatting for PyPI dependencies — stable ordering, smaller diffs, comments preserved, unit + snapshot tests.",
+          "url": "https://github.com/prefix-dev/pixi/pull/5677",
+          "state": "open"
+        }
+      ]
+    },
+    "orgs": [
+      {
+        "name": "sktime",
+        "logo": "https://github.com/sktime.png",
+        "url": "https://github.com/sktime/sktime",
+        "blurb": "Implemented a PyTorch-based FCN model for time-series tasks — integration and testing included."
+      },
+      {
+        "name": "pgmpy",
+        "logo": "https://github.com/pgmpy.png",
+        "url": "https://github.com/pgmpy/pgmpy/pulls?q=is%3Apr+author%3Akajal-jotwani",
+        "blurb": "Multiple PRs — feature improvements, bug fixes, and refactoring of model utilities."
+      },
+      {
+        "name": "Karmada",
+        "logo": "https://github.com/karmada-io.png",
+        "url": "https://github.com/karmada-io/karmada",
+        "blurb": "Contributions in the multi-cluster Kubernetes ecosystem."
+      },
+      {
+        "name": "Volcano",
+        "logo": "https://github.com/volcano-sh.png",
+        "url": "https://github.com/volcano-sh/volcano",
+        "blurb": "Batch scheduling for Kubernetes — cloud-native ecosystem contributions."
+      },
+      {
+        "name": "Headlamp",
+        "logo": "https://github.com/headlamp-k8s.png",
+        "url": "https://github.com/headlamp-k8s/headlamp",
+        "blurb": "The extensible Kubernetes UI — cloud-native ecosystem contributions."
       }
     ]
   },

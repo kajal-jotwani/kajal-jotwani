@@ -5,18 +5,16 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import Projects from "@/components/Projects";
+import OpenSource from "@/components/OpenSource";
 import Blog from "@/components/Blog";
 import Ama from "@/components/Ama";
 import Booking from "@/components/Booking";
 import Footer from "@/components/Footer";
 import SectionTitle from "@/components/SectionTitle";
-import JsonLd from "@/components/JsonLd";
-import { personSchema, websiteSchema } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
-      <JsonLd schema={[personSchema(), websiteSchema()]} />
       <ArtBg />
       <Playhead />
       <Nav />
@@ -25,6 +23,7 @@ export default function Home() {
         <About />
         <Timeline />
         <Projects />
+        <OpenSource />
         <Blog />
         <section data-section id="chat" className="mx-auto max-w-5xl px-5 py-24">
           <SectionTitle title="say hi" />

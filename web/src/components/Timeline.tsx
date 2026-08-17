@@ -63,13 +63,22 @@ function Step({ e, i }: { e: ExperienceEntry; i: number }) {
           >
             {String(i + 1).padStart(2, "0")}
           </span>
-          <button
+          <div
+            role="button"
+            tabIndex={0}
             onClick={() => {
               setOpen(!open);
               emit("plink", open ? 2 : 5);
             }}
+            onKeyDown={(ev) => {
+              if (ev.key === "Enter" || ev.key === " ") {
+                ev.preventDefault();
+                setOpen(!open);
+                emit("plink", open ? 2 : 5);
+              }
+            }}
             aria-expanded={open}
-            className={`group w-full rounded-2xl border border-line bg-bg-card/80 p-5 text-left backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:shadow-[0_14px_40px_-20px_rgba(0,0,0,0.3)] sm:p-6 ${accentBorder[e.accent] ?? ""}`}
+            className={`group w-full cursor-pointer rounded-2xl border border-line bg-bg-card/80 p-5 text-left backdrop-blur-[2px] transition-all hover:-translate-y-1 hover:shadow-[0_14px_40px_-20px_rgba(0,0,0,0.3)] sm:p-6 ${accentBorder[e.accent] ?? ""}`}
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <span className={`font-mono text-[11px] tracking-[0.25em] ${accentText[e.accent] ?? "text-accent"}`}>
@@ -86,6 +95,17 @@ function Step({ e, i }: { e: ExperienceEntry; i: number }) {
             <div className={`liner ${open ? "open" : ""}`}>
               <div>
                 <p className="mt-4 border-t border-line pt-4 text-[15px] leading-relaxed">{e.detail}</p>
+                {e.link && (
+                  <a
+                    href={e.link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(ev) => ev.stopPropagation()}
+                    className="squiggle font-mono mt-3 inline-block text-[12px] lowercase tracking-widest text-accent"
+                  >
+                    {e.link.label} ↗
+                  </a>
+                )}
               </div>
             </div>
 
@@ -99,7 +119,7 @@ function Step({ e, i }: { e: ExperienceEntry; i: number }) {
                 </span>
               ))}
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </Reveal>
