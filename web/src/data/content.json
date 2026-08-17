@@ -40,7 +40,7 @@
     ],
     "currently": [
       "exploring AI systems & MCP",
-      "contributing to pixi (Rust) via European Summer of Code",
+      "ESoC '25 — causal identification in pgmpy",
       "Linux Foundation LiFT '25 scholar",
       "writing about what I learn"
     ],
@@ -101,11 +101,11 @@
         "id": "esoc",
         "time": "2025 · now",
         "title": "European Summer of Code — Contributor",
-        "org": "prefix.dev · pixi",
-        "short": "Shipping Rust into pixi, the fast package manager.",
-        "detail": "Contributing to pixi through European Summer of Code — CLI behavior, build tooling and dependency handling. Shipped selective cargo binary installation in the pixi-build-rust backend, a --executable flag so pixi run works even when task names collide, and uv-style dependency sorting & formatting that keeps diffs small and comments intact.",
-        "tags": ["Rust", "CLI", "Build Tooling", "Open Source"],
-        "link": { "label": "see my pixi PRs", "url": "https://github.com/prefix-dev/pixi/pulls?q=is%3Apr+author%3Akajal-jotwani" },
+        "org": "pgmpy",
+        "short": "Building the causal identification module in pgmpy.",
+        "detail": "Contributing to pgmpy, the Python library for probabilistic graphical models and causal inference, through European Summer of Code — working on the causal identification module: figuring out when and how a causal effect can be identified from observational data and a graph. Grew out of my earlier PRs to the library, now as its ESoC contributor.",
+        "tags": ["Python", "Causal Inference", "Graphical Models", "Open Source"],
+        "link": { "label": "see my pgmpy PRs", "url": "https://github.com/pgmpy/pgmpy/pulls?q=is%3Apr+author%3Akajal-jotwani" },
         "accent": "violet"
       }
     ]
@@ -214,7 +214,7 @@
         "name": "pgmpy",
         "logo": "https://github.com/pgmpy.png",
         "url": "https://github.com/pgmpy/pgmpy/pulls?q=is%3Apr+author%3Akajal-jotwani",
-        "blurb": "Multiple PRs — feature improvements, bug fixes, and refactoring of model utilities."
+        "blurb": "Multiple PRs — features, fixes, model-utility refactors — and now my ESoC '25 home: the causal identification module."
       },
       {
         "name": "Karmada",
