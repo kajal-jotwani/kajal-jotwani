@@ -209,41 +209,6 @@ body {
   animation: spin 4s linear infinite;
 }
 
-/* ---------- blog art: keep the reading column clear ----------
-   The figure is carved out of the middle of the viewport so it only ever
-   lives in the margins around the text. */
-.blog-art-mask {
-  -webkit-mask-image: radial-gradient(
-    ellipse 55% 64% at 50% 45%,
-    transparent 52%,
-    rgba(0, 0, 0, 0.4) 76%,
-    black 96%
-  );
-  mask-image: radial-gradient(
-    ellipse 55% 64% at 50% 45%,
-    transparent 52%,
-    rgba(0, 0, 0, 0.4) 76%,
-    black 96%
-  );
-}
-
-/* narrow screens have no margins — the text spans everything, so pull back */
-@media (max-width: 1000px) {
-  .blog-art-mask {
-    opacity: 0.35;
-    -webkit-mask-image: radial-gradient(
-      ellipse 96% 60% at 50% 45%,
-      transparent 58%,
-      black 100%
-    );
-    mask-image: radial-gradient(
-      ellipse 96% 60% at 50% 45%,
-      transparent 58%,
-      black 100%
-    );
-  }
-}
-
 /* ---------- life-post prose ---------- */
 .prose-life {
   font-size: 17px;
