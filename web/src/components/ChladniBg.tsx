@@ -6,14 +6,15 @@ import { seededRng } from "@/lib/seeded";
 import { vibration, type ChladniParams } from "@/lib/chladni";
 
 /**
- * Simulates the sand: thousands of grains start scattered, and every frame
- * each grain jumps with an amplitude proportional to how hard the plate
- * vibrates beneath it. Where the plate is loud, sand flies; where it is
- * silent, sand stays. Over ~6 seconds the noise anneals into the figure —
- * then everything goes still so the page is calm while you read.
+ * Renders the post's Chladni figure fully settled and perfectly STILL.
+ * The sand simulation runs instantly at mount (a few thousand grains
+ * annealing onto the nodal lines), the finished figure fades in once,
+ * and then nothing on this page ever moves — motion behind text is
+ * hostile to readers, especially ADHD and vestibular-sensitive ones.
+ * The art is the pattern, not the performance.
  *
- * The .blog-art-mask keeps the text column clear; the figure lives in the
- * margins and behind the whitespace.
+ * The .blog-art-mask keeps the text column clear; the figure lives in
+ * the margins.
  */
 export default function ChladniBg({ params }: { params: ChladniParams }) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -21,11 +22,8 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
   useEffect(() => {
     const canvas = ref.current!;
     const ctx = canvas.getContext("2d")!;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const FRAMES = 380;
-    let raf = 0;
-    let frame = 0;
+    const STEPS = 320;
     let w = 0;
     let h = 0;
     let colA = "#6d4aff";
@@ -33,16 +31,10 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
     let alpha = 0.55;
     let dark = false;
 
-    const rng = seededRng("sand:" + params.n + ":" + params.m);
     const COUNT = typeof window !== "undefined" && window.innerWidth < 768 ? 2400 : 6000;
     const gx = new Float32Array(COUNT);
     const gy = new Float32Array(COUNT);
-    const gb = new Uint8Array(COUNT); // 1 = accent-coloured grain
-    for (let i = 0; i < COUNT; i++) {
-      gx[i] = rng();
-      gy[i] = rng();
-      gb[i] = rng() < 0.28 ? 1 : 0;
-    }
+    const gb = new Uint8Array(COUNT);
 
     const readTheme = () => {
       const cs = getComputedStyle(document.body);
@@ -62,30 +54,38 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    /** one physics step: grains jump where the plate is loud */
-    const step = (annealing: number) => {
-      const k = 0.05 * Math.pow(annealing, 1.6) + 0.00018;
+    /** run the whole annealing synchronously — grains leap where the plate
+     *  is loud, settle where it is silent; nobody sees the intermediate
+     *  states, only the finished figure */
+    const solve = () => {
+      const rng = seededRng("sand:" + params.n + ":" + params.m);
       for (let i = 0; i < COUNT; i++) {
-        const v = Math.abs(vibration(params, gx[i], gy[i]));
-        const jump = k * v;
-        gx[i] += (rng() - 0.5) * jump;
-        gy[i] += (rng() - 0.5) * jump;
-        if (gx[i] < 0) gx[i] = -gx[i];
-        if (gx[i] > 1) gx[i] = 2 - gx[i];
-        if (gy[i] < 0) gy[i] = -gy[i];
-        if (gy[i] > 1) gy[i] = 2 - gy[i];
+        gx[i] = rng();
+        gy[i] = rng();
+        gb[i] = rng() < 0.28 ? 1 : 0;
+      }
+      for (let f = 0; f < STEPS; f++) {
+        const k = 0.05 * Math.pow(1 - f / STEPS, 1.6) + 0.00018;
+        for (let i = 0; i < COUNT; i++) {
+          const v = Math.abs(vibration(params, gx[i], gy[i]));
+          const jump = k * v;
+          gx[i] += (rng() - 0.5) * jump;
+          gy[i] += (rng() - 0.5) * jump;
+          if (gx[i] < 0) gx[i] = -gx[i];
+          if (gx[i] > 1) gx[i] = 2 - gx[i];
+          if (gy[i] < 0) gy[i] = -gy[i];
+          if (gy[i] > 1) gy[i] = 2 - gy[i];
+        }
       }
     };
 
-    const draw = (final: boolean) => {
+    const draw = () => {
       ctx.clearRect(0, 0, w, h);
-      // settled grains get a faint glow pass — sand under stage light
-      if (final) {
-        ctx.globalAlpha = dark ? 0.08 : 0.05;
-        for (let i = 0; i < COUNT; i++) {
-          ctx.fillStyle = gb[i] ? colB : colA;
-          ctx.fillRect(gx[i] * w - 1.5, gy[i] * h - 1.5, 4, 4);
-        }
+      // faint glow pass — sand under soft light
+      ctx.globalAlpha = dark ? 0.08 : 0.05;
+      for (let i = 0; i < COUNT; i++) {
+        ctx.fillStyle = gb[i] ? colB : colA;
+        ctx.fillRect(gx[i] * w - 1.5, gy[i] * h - 1.5, 4, 4);
       }
       ctx.globalAlpha = alpha;
       for (let i = 0; i < COUNT; i++) {
@@ -95,62 +95,36 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       ctx.globalAlpha = 1;
     };
 
-    /** once the sand is settled, the whole drawing recedes so reading owns
-     *  the page — the show lasts ~6s, then it's texture, not spectacle */
-    const dim = () => {
-      canvas.style.opacity = dark ? "0.38" : "0.42";
-    };
+    readTheme();
+    layout();
+    solve();
+    draw();
+    // one gentle fade-in of a still image, then permanence
+    requestAnimationFrame(() => {
+      canvas.style.opacity = dark ? "0.4" : "0.45";
+    });
 
-    const loop = () => {
-      const annealing = 1 - frame / FRAMES;
-      step(annealing);
-      const final = frame >= FRAMES - 1;
-      draw(final);
-      frame++;
-      if (!final) raf = requestAnimationFrame(loop);
-      else dim();
-    };
-
-    const restart = () => {
-      cancelAnimationFrame(raf);
-      layout();
-      readTheme();
-      if (reduced || frame >= FRAMES) {
-        // no animation: settle instantly and show the finished, quiet figure
-        for (let f = frame; f < FRAMES; f++) step(1 - f / FRAMES);
-        frame = FRAMES;
-        draw(true);
-        dim();
-      } else {
-        canvas.style.opacity = "1";
-        raf = requestAnimationFrame(loop);
-      }
-    };
-
-    restart();
-
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      layout();
-      draw(frame >= FRAMES);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        layout();
+        solve();
+        draw();
+      }, 150);
     };
     const offTheme = on("theme", () =>
       setTimeout(() => {
         readTheme();
-        draw(frame >= FRAMES);
-        if (frame >= FRAMES) dim();
+        draw();
+        canvas.style.opacity = dark ? "0.4" : "0.45";
       }, 620)
     );
     window.addEventListener("resize", onResize);
-    const vis = () => {
-      if (document.hidden) cancelAnimationFrame(raf);
-      else if (frame < FRAMES && !reduced) raf = requestAnimationFrame(loop);
-    };
-    document.addEventListener("visibilitychange", vis);
 
     return () => {
-      cancelAnimationFrame(raf);
+      clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
-      document.removeEventListener("visibilitychange", vis);
       offTheme();
     };
   }, [params]);
@@ -160,7 +134,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       ref={ref}
       aria-hidden
       className="blog-art-mask pointer-events-none fixed inset-0 -z-10"
-      style={{ transition: "opacity 2.5s ease" }}
+      style={{ opacity: 0, transition: "opacity 1.4s ease" }}
     />
   );
 }
