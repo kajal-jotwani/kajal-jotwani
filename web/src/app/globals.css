@@ -209,6 +209,22 @@ body {
   animation: spin 4s linear infinite;
 }
 
+/* ---------- terrain map: soften under the reading column ---------- */
+.terrain-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 56% 60% at 50% 42%,
+    rgba(0, 0, 0, 0.16) 30%,
+    rgba(0, 0, 0, 0.55) 68%,
+    black 95%
+  );
+  mask-image: radial-gradient(
+    ellipse 56% 60% at 50% 42%,
+    rgba(0, 0, 0, 0.16) 30%,
+    rgba(0, 0, 0, 0.55) 68%,
+    black 95%
+  );
+}
+
 /* ---------- life-post prose ---------- */
 .prose-life {
   font-size: 17px;
