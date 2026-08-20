@@ -214,16 +214,16 @@ body {
    lives in the margins around the text. */
 .blog-art-mask {
   -webkit-mask-image: radial-gradient(
-    ellipse 52% 62% at 50% 45%,
-    transparent 46%,
-    rgba(0, 0, 0, 0.55) 74%,
-    black 94%
+    ellipse 55% 64% at 50% 45%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.4) 76%,
+    black 96%
   );
   mask-image: radial-gradient(
-    ellipse 52% 62% at 50% 45%,
-    transparent 46%,
-    rgba(0, 0, 0, 0.55) 74%,
-    black 94%
+    ellipse 55% 64% at 50% 45%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.4) 76%,
+    black 96%
   );
 }
 

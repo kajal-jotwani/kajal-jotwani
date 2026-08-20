@@ -34,7 +34,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
     let dark = false;
 
     const rng = seededRng("sand:" + params.n + ":" + params.m);
-    const COUNT = typeof window !== "undefined" && window.innerWidth < 768 ? 3200 : 9000;
+    const COUNT = typeof window !== "undefined" && window.innerWidth < 768 ? 2400 : 6000;
     const gx = new Float32Array(COUNT);
     const gy = new Float32Array(COUNT);
     const gb = new Uint8Array(COUNT); // 1 = accent-coloured grain
@@ -50,7 +50,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       colA = cs.getPropertyValue(vars[params.hueA % 3]).trim() || colA;
       colB = cs.getPropertyValue(vars[params.hueB % 3]).trim() || colB;
       dark = document.documentElement.classList.contains("dark");
-      alpha = dark ? 0.8 : 0.68;
+      alpha = dark ? 0.6 : 0.55;
     };
 
     const layout = () => {
@@ -79,20 +79,26 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
 
     const draw = (final: boolean) => {
       ctx.clearRect(0, 0, w, h);
-      // settled grains get a soft glow pass — sand under stage light
+      // settled grains get a faint glow pass — sand under stage light
       if (final) {
-        ctx.globalAlpha = dark ? 0.16 : 0.1;
+        ctx.globalAlpha = dark ? 0.08 : 0.05;
         for (let i = 0; i < COUNT; i++) {
           ctx.fillStyle = gb[i] ? colB : colA;
-          ctx.fillRect(gx[i] * w - 2.5, gy[i] * h - 2.5, 6, 6);
+          ctx.fillRect(gx[i] * w - 1.5, gy[i] * h - 1.5, 4, 4);
         }
       }
       ctx.globalAlpha = alpha;
       for (let i = 0; i < COUNT; i++) {
         ctx.fillStyle = gb[i] ? colB : colA;
-        ctx.fillRect(gx[i] * w, gy[i] * h, 1.7, 1.7);
+        ctx.fillRect(gx[i] * w, gy[i] * h, 1.4, 1.4);
       }
       ctx.globalAlpha = 1;
+    };
+
+    /** once the sand is settled, the whole drawing recedes so reading owns
+     *  the page — the show lasts ~6s, then it's texture, not spectacle */
+    const dim = () => {
+      canvas.style.opacity = dark ? "0.38" : "0.42";
     };
 
     const loop = () => {
@@ -102,6 +108,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       draw(final);
       frame++;
       if (!final) raf = requestAnimationFrame(loop);
+      else dim();
     };
 
     const restart = () => {
@@ -109,11 +116,13 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       layout();
       readTheme();
       if (reduced || frame >= FRAMES) {
-        // no animation: settle instantly and show the finished figure
+        // no animation: settle instantly and show the finished, quiet figure
         for (let f = frame; f < FRAMES; f++) step(1 - f / FRAMES);
         frame = FRAMES;
         draw(true);
+        dim();
       } else {
+        canvas.style.opacity = "1";
         raf = requestAnimationFrame(loop);
       }
     };
@@ -128,6 +137,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       setTimeout(() => {
         readTheme();
         draw(frame >= FRAMES);
+        if (frame >= FRAMES) dim();
       }, 620)
     );
     window.addEventListener("resize", onResize);
@@ -150,6 +160,7 @@ export default function ChladniBg({ params }: { params: ChladniParams }) {
       ref={ref}
       aria-hidden
       className="blog-art-mask pointer-events-none fixed inset-0 -z-10"
+      style={{ transition: "opacity 2.5s ease" }}
     />
   );
 }
