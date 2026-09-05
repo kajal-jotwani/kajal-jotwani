@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Kajal Jotwani — software developer & creative coder",
-    "description": "Backend & systems developer who also makes art and music with code. GSoC '25 · C4GT '25 · ESoC '25 · open source. This site is an instrument — press play.",
+    "description": "Backend & systems developer who also makes art and music with code. GSoC '25 · C4GT '25 · ESoC '26 · open source. This site is an instrument — press play.",
     "siteUrl": "https://www.kajaljotwani.me",
     "songDurationSeconds": 216
   },
@@ -40,8 +40,8 @@
     ],
     "currently": [
       "exploring AI systems & MCP",
-      "ESoC '25 — causal identification in pgmpy",
-      "Linux Foundation LiFT '25 scholar",
+      "Learning about Causal AI",
+      "contributing to open source",
       "writing about what I learn"
     ],
     "funFacts": [
@@ -67,7 +67,7 @@
     "entries": [
       {
         "id": "wescholar",
-        "time": "2024",
+        "time": "Feb 2024 - Feb 2026",
         "title": "Women Engineers Scholar",
         "org": "Google × TalentSprint",
         "short": "Selected for the WE program by Google and TalentSprint.",
@@ -77,7 +77,7 @@
       },
       {
         "id": "gsoc",
-        "time": "summer 2025",
+        "time": "May 2025 - Sep 2025",
         "title": "Google Summer of Code — Contributor",
         "org": "UC OSPO · Brahma-XR",
         "short": "Helped take a WebXR research framework from private repo to public open source.",
@@ -88,7 +88,7 @@
       },
       {
         "id": "c4gt",
-        "time": "2025",
+        "time": "June 2025 - Aug 2025",
         "title": "Code for GovTech — Contributor",
         "org": "ADC Karnal · Dedicated Mentoring Program",
         "short": "Built an Education Management Information System for a district administration.",
@@ -99,7 +99,7 @@
       },
       {
         "id": "esoc",
-        "time": "2025 · now",
+        "time": "May 2026 - Aug 2026",
         "title": "European Summer of Code — Contributor",
         "org": "pgmpy",
         "short": "Building the causal identification module in pgmpy.",

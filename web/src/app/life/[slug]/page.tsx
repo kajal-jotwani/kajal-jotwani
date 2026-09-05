@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getLifePost, getLifePosts } from "@/lib/life";
 import TerrainBg from "@/components/TerrainBg";
+import PostStats from "@/components/PostStats";
 import { site } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -63,6 +64,8 @@ export default async function LifePostPage({
             say hi?
           </Link>
         </p>
+
+        <PostStats slug={post.slug} />
 
         {/* the map legend */}
         <footer className="mt-14 border-t border-line pt-6">
