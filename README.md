@@ -27,7 +27,7 @@ one curious step at a time ✨
 
 ## 🌱 A little about me
 
-✨ **Third-year Computer Science undergrad** 
+✨ **Final-year Computer Science undergrad** 
 
 💻 **Backend, Systems & Beyond**  
 I enjoy exploring backend technologies, system design, and how things work under the hood.  
